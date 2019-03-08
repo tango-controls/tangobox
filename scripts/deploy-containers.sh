@@ -9,15 +9,15 @@ docker image build -t base base/
 docker build -t archive archive/
 docker build -t sim sim/
 docker build -t com com/
-docker build -t egiga egiga/
+# docker build -t egiga egiga/
 docker build -t hdbpp hdbpp/
 docker build -t web web/ 
 
 # containers strart
-create-tangobox-container archive
+create-tangobox-container-root archive
 create-tangobox-container sim
 create-tangobox-container com
-create-tangobox-container egiga
+# create-tangobox-container egiga
 create-tangobox-container hdbpp
 create-tangobox-container web
 
