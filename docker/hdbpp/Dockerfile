@@ -37,7 +37,7 @@ RUN chmod +x /usr/local/bin/*
 
 # database preparation
 RUN bash -c "mysqld_safe --defaults-file=/etc/mysql/my.cnf &"\
- && sleep 5 \
+ && sleep 10 \
  && /usr/local/bin/initdb.sh \
  && sleep 10 \
  && /usr/local/bin/add_tables.sh \
