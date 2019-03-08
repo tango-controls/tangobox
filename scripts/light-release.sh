@@ -13,7 +13,7 @@ docker rm $(docker ps -a -q)
 docker rmi $(docker images -q)
 
 # make clean-up
-# docker system prune -a
+docker image prune -a
 
 # sudo apt-get -y remove docker-ce
 sudo apt-get -y remove gimp
