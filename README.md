@@ -16,16 +16,17 @@ To build a TangoBox using this repository, one need to:
 - clone this repository there (`git clone https://github.com/tango-controls/tangobox`)
 - go to scripts folder (`cd tangobox/scripts`)
 - use the scripts:
-	- `./clean-disks.sh`	
-	- `./configure-tango.sh`
-	- `./deploy-containers.sh`
-	- install-docker.sh 
-	- install-documentation.sh
-	- install-examples.sh 
-	- install-services.sh 
-	- install-tango.sh
-	- install-tools.sh 
-	- light-release.sh
-	- make-containers.sh
-	- prepare-tree.sh
+	- `./prepare-tree.sh` - to generate */home/tango-cs* folders structure 
+	- `./install-docker.sh` - to install docker tools
+	- `./install-tango.sh` - to install tango from source distribution
+	- `./install-services.sh` - to make tango componets (Database, Starter, Access Control) starts as servcies
+	- `./install-tools.sh` - to install various Tango Contorls tools (PyTango, HDB/TDB, SNAP, HDB++, ...)
+	- `./configure-tango.sh` - to populate tango database with demo related devices	
+	- `./deploy-containers.sh` - to create containers with services (HDB++, HDB/TDB/SNAP, Waltz, Linac simulation, ...)
+	- `./install-examples.sh` - to install example applications
+	- `./install-documentation.sh`	- to provide documentation developement environment (in ~/work/documentation)
+	- `./clean-disks.sh` - if you want to save diskspace before releasing
+	- `./light-release.sh` - if you want to make light release (without docker images built)
+	- `./make-containers.sh` - this script is provided for the light verstion, to be lunched after download to build docker containers
+	
 
