@@ -8,10 +8,11 @@ This repository contains scripts and assets (files, Dockerfiles) to build a demo
 
 This release is based on Ubuntu 18.04LTS.
 
-There are two type of releases:
-- a standard one, which is a big .ova file. It contains all tools pre-installed and pre-built all docker containers. 
+There are two types of releases:
+
+- A standard one, which is a big .ova file. It contains all tools pre-installed and pre-built all docker containers. 
   All its functionality is available directly after importing to VirtualBox or VMware.  
-- a 'light' one, which has no pre-built docker containers. To use all its feature it is necessary to built containers, 
+- A **'light'** one, which has no pre-built docker containers. To use all its feature it is necessary to built containers, 
   when the VM is started for the first time. 
 
 ## How to use a '-light' release
