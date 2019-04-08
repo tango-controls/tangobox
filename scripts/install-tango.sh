@@ -13,6 +13,8 @@ TANGO_VERSION="9.3.2"
 TANGO_RELEASE="9.3.2-alpha.1"
 LOG4J_VERSION="1.2.17"
 
+BUILD_SOURCE_DISTRIBUTION=1
+
 sudo apt install -y \
   libmariadb-dev \
   libmariadbclient-dev \
@@ -45,13 +47,22 @@ sudo cp -r --backup=numbered "$TANGOBOX_VM_DIR/etc"/* /etc/
 sudo cp --backup=numbered "$TANGOBOX_VM_DIR/etc/tangorc" /etc/
 
 # get, build and install tango from source distribution
-rm -rf "$TANGOBOX_BUILD_DIR"
+sudo rm -rf "$TANGOBOX_BUILD_DIR"
 mkdir -p "$TANGOBOX_BUILD_DIR"
 cd "$TANGOBOX_BUILD_DIR"
-# cp ~/work/tangobox/tango-9.3.2-alpha.1.tar.gz .
-wget "https://github.com/tango-controls/TangoSourceDistribution/releases/download/$TANGO_RELEASE/tango-$TANGO_RELEASE.tar.gz"
-tar -zxf "tango-$TANGO_RELEASE.tar.gz"
-cd "$TANGOBOX_BUILD_DIR/tango-$TANGO_VERSION/"
+
+if [[ $BUILD_SOURCE_DISTRIBUTION = 1 ]]; then
+  git clone --branch prepare-9.3.3 --depth 1 https://github.com/tango-controls/TangoSourceDistribution.git
+  cd TangoSourceDistribution
+  ant build package
+  cd ../
+  tar xf TangoSourceDistribution/build/tango-dev.tar.gz
+  cd tango-*/
+else
+  wget "https://github.com/tango-controls/TangoSourceDistribution/releases/download/$TANGO_RELEASE/tango-$TANGO_RELEASE.tar.gz"
+  tar -zxf "tango-$TANGO_RELEASE.tar.gz"
+  cd "$TANGOBOX_BUILD_DIR/tango-$TANGO_VERSION/"
+fi
 
 # run configure and make with sudo to allow mysql root access
 sudo ./configure \
