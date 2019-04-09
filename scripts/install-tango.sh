@@ -5,7 +5,7 @@ set -e
 
 TANGOBOX_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && cd .. && pwd )"
 TANGOBOX_VM_DIR="$TANGOBOX_DIR/vm"
-TANGOBOX_BUILD_DIR="$TANGOBOX_DIR/build"
+TANGOBOX_BUILD_DIR=~/work/tangobox/build
 TANGOBOX_DB_DIR=~/work/tangobox/db # installed by prepare-tree.sh
 
 # specify version
