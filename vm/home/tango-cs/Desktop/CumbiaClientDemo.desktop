@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Icon=QtProject-qtcreator
+Exec=cumbia client sys/tg_test/1/double_scalar
+Name=CumbiaClientDemo
