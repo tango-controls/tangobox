@@ -25,18 +25,17 @@ sudo apt install -y \
   python-ipython \
   python-ply
 
-pip install --user \
-  numpy \
-  sphinx \
-  sphinx_rtd_theme \
-  lxml \
-  pytango \
-  fandango \
-  PyTangoArchiving \
-  itango \
-  taurus \
-  panic \
-  sardana \
+pip install --user numpy
+pip install --user sphinx
+pip install --user sphinx_rtd_theme
+pip install --user lxml
+pip install --user pytango
+pip install --user fandango
+pip install --user PyTangoArchiving
+pip install --user itango
+pip install --user taurus
+pip install --user panic
+pip install --user sardana
 
 # archiving suit from SOLEIL (java)
 mkdir -p ~/work/tangobox/build
