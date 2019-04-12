@@ -3,8 +3,7 @@
 # This script installs examples
 
 # install a SardanaGUI
-# cd ~/examples/SardanaGUI
-# pip install . --user
+pip install --user ~/examples/SardanaGUI/
 
 # make jlinac example running
 cd ~/bin/
