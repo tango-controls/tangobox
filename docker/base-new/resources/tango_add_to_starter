@@ -1,0 +1,34 @@
+#!/usr/bin/env python2
+
+import sys
+import tango
+
+if len(sys.argv) != 4:
+    print("usage: {} <hostname> <exec>/<inst> <level>".format(sys.argv[0]))
+    sys.exit(1)
+
+try:
+
+    info = tango.DbServerInfo()
+    info.name = sys.argv[2].lower()
+    info.host = sys.argv[1]
+    info.mode = 1 # controlled
+    info.level = int(sys.argv[3])
+
+    export = tango.DbDevExportInfo()
+    export.name = "dserver/{}".format(sys.argv[2])
+    export.ior = 'nada'
+    export.host = sys.argv[1]
+    export.version = '0'
+    export.pid = -1
+
+    db = tango.Database()
+    db.put_server_info(info)
+    db.export_device(export)
+    db.unexport_device(export.name)
+
+    sys.exit(0)
+
+except:
+
+    sys.exit(1)

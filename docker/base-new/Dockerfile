@@ -82,6 +82,9 @@ RUN apt update \
  && rm -rf /tango-* \
  && rm -rf /pytango
 
-COPY resources/tango_register_device /usr/local/bin/
+COPY \
+    resources/tango_register_device \
+    resources/tango_add_to_starter \
+    /usr/local/bin/
 
 ENV TANGO_HOST tangobox:10000
