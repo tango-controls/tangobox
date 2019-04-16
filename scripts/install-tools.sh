@@ -1,35 +1,44 @@
 #!/usr/bin/env bash
 
-# This script installs set of  Tango tools 
+set -x
+set -e
+
+# This script installs set of  Tango tools
 
 # Python tools
-sudo apt install python-pip
-sudo apt install python-qt4
-sudo apt install qt4-designer
-sudo apt install python-qwt python-qwt5-qt4 python-guiqwt python-numpy
-sudo apt install python-pymca python-pymca5
-sudo apt install libboost-python-dev
-sudo apt install python-pyqt5.qtwebkit
-sudo apt install python-pyqt5.qtsvg
-sudo apt install python-spyder
-sudo apt install python-spyderlib
-sudo apt install python-html5lib 
-sudo apt install python-ipython
-sudo apt install python-ply
+sudo apt install -y \
+  python-pip \
+  python-qt4 \
+  qt4-designer \
+  python-qwt \
+  python-qwt5-qt4 \
+  python-guiqwt \
+  python-numpy \
+  pymca \
+  python-pymca5 \
+  libboost-python-dev \
+  python-pyqt5.qtwebkit \
+  python-pyqt5.qtsvg \
+  python-spyder \
+  python-spyderlib \
+  python-html5lib \
+  python-ipython \
+  python-ply
 
-pip install numpy --user
-pip install sphinx --user
-pip install sphinx_rtd_theme --user
-pip install lxml --user
-pip install pytango --user
-pip install fandango --user
-pip install PyTangoArchiving --user
-pip install itango --user
-pip install taurus --user
-pip install panic --user
-pip install sardana --user
+pip install --user numpy
+pip install --user sphinx
+pip install --user sphinx_rtd_theme
+pip install --user lxml
+pip install --user pytango
+pip install --user fandango
+pip install --user PyTangoArchiving
+pip install --user itango
+pip install --user taurus
+pip install --user panic
+pip install --user sardana
 
 # archiving suit from SOLEIL (java)
+mkdir -p ~/work/tangobox/build
 cd ~/work/tangobox/build/
 wget -O ArchivingRoot.zip https://sourceforge.net/projects/tango-cs/files/tools/ArchivingRoot-16.2.4.zip/download
 mkdir -p ~/tools/archiving-java
@@ -55,4 +64,4 @@ wget http://ftp.esrf.eu/pub/cs/tango/hdbviewer/jython.jar
 wget -O jhdbviewer.jar https://bintray.com/tango-controls/maven/download_file?file_path=org%2Ftango%2Fjhdbviewer%2F1.14%2Fjhdbviewer-1.14.jar
 cd ../bin
 chmod +x *
-ln -s -t ~/bin ~/tools/archiving-hdbpp/bin/* 
+ln -s -t ~/bin ~/tools/archiving-hdbpp/bin/*
