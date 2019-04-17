@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "python2",
+    "-m",
+    "ipykernel",
+    "-f",
+    "{connection_file}",
+    "--profile",
+    "jupytango"
+  ],
+  "language": "python",
+  "display_name": "JupyTango"
+}
