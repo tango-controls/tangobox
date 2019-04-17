@@ -3,7 +3,7 @@
 set -x
 set -e
 
-ARCHIVE_HOST=tangobox-archive
+HOST=tangobox-archive
 
 tango_register_device HdbArchiver/01      HdbArchiver         archiving/hdb/hdbarchiver.01_01
 tango_register_device HdbArchiver/01      HdbArchiver         archiving/hdb/hdbarchiver.01_02
@@ -18,12 +18,14 @@ tango_register_device SnapExtractor/1     SnapExtractor       archiving/snap/sna
 tango_register_device TdbExtractor/1      TdbExtractor        archiving/tdb/tdbextractor.1
 tango_register_device HDBTDBArchivingWatcher/HDBTDB HDBTDBArchivingWatcher archiving/hdbtdb/hdbtdbarchivingwatcher.1
 
-tango_add_to_starter ${ARCHIVE_HOST} HdbArchiver/01                2
-tango_add_to_starter ${ARCHIVE_HOST} SnapArchiver/01               2
-tango_add_to_starter ${ARCHIVE_HOST} TdbArchiver/01                2
-tango_add_to_starter ${ARCHIVE_HOST} ArchivingManager/1            3
-tango_add_to_starter ${ARCHIVE_HOST} SnapManager/1                 3
-tango_add_to_starter ${ARCHIVE_HOST} HdbExtractor/1                4
-tango_add_to_starter ${ARCHIVE_HOST} SnapExtractor/1               4
-tango_add_to_starter ${ARCHIVE_HOST} TdbExtractor/1                4
-tango_add_to_starter ${ARCHIVE_HOST} HDBTDBArchivingWatcher/HDBTDB 5
+tango_add_to_starter ${HOST} 2 HdbArchiver/01
+tango_add_to_starter ${HOST} 2 SnapArchiver/01
+tango_add_to_starter ${HOST} 2 TdbArchiver/01
+tango_add_to_starter ${HOST} 3 ArchivingManager/1
+tango_add_to_starter ${HOST} 3 SnapManager/1
+tango_add_to_starter ${HOST} 4 HdbExtractor/1
+tango_add_to_starter ${HOST} 4 SnapExtractor/1
+tango_add_to_starter ${HOST} 4 TdbExtractor/1
+tango_add_to_starter ${HOST} 5 HDBTDBArchivingWatcher/HDBTDB 5
+
+python -c "import tango; tango.Database().put_device_property('tango/admin/${HOST}', {'StartDsPath': ['/usr/bin', '/usr/local/bin']})"

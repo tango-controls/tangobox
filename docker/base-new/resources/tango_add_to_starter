@@ -3,21 +3,24 @@
 import sys
 import tango
 
-if len(sys.argv) != 4:
-    print("usage: {} <hostname> <exec>/<inst> <level>".format(sys.argv[0]))
+if len(sys.argv) < 4:
+    print("usage: {} <hostname> <level> <exec>/<inst>...".format(sys.argv[0]))
     sys.exit(1)
 
-try:
+host = sys.argv[1]
+level = sys.argv[2]
+
+def add_server(name):
     info = tango.DbServerInfo()
-    info.name = sys.argv[2].lower()
-    info.host = sys.argv[1]
+    info.name = name.lower()
+    info.host = host
     info.mode = 1 # controlled
-    info.level = int(sys.argv[3])
+    info.level = int(level)
 
     export = tango.DbDevExportInfo()
-    export.name = "dserver/{}".format(sys.argv[2])
+    export.name = "dserver/{}".format(name)
     export.ior = 'nada'
-    export.host = sys.argv[1]
+    export.host = host
     export.version = '0'
     export.pid = -1
 
@@ -26,5 +29,14 @@ try:
     db.export_device(export)
     db.unexport_device(export.name)
 
-except:
+failed = False
+
+for name in sys.argv[3:]:
+    try:
+        add_server(name)
+    except:
+        failed = True
+        print("failed: {}".format(name))
+
+if failed:
     sys.exit(1)
