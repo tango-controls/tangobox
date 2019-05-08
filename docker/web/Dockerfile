@@ -8,7 +8,7 @@ ENV CATALINA_HOME=/opt/tomcat
 ENV CATALINA_BASE=/opt/tomcat
 
 RUN cd /opt \
-    && wget http://ftp.man.poznan.pl/apache/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38.tar.gz \
+    && wget http://mirror.23media.de/apache/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38.tar.gz \
     && sudo mkdir /opt/tomcat \
     && sudo tar xzvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1 \
     && rm -r apache-tomcat-8.5.38.tar.gz \
